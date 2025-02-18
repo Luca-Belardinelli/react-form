@@ -11,7 +11,7 @@ export default function BlogList() {
     // STATO INPUT DI INSERIMENTO NUOVO BLOG
     const [newblog, setNewBlog] = useState('');
 
-    // FUNZIONE AGGIUNTA BLOG ALLA LISTA 
+    // FUNZIONE DI CB AGGIUNTA BLOG ALLA LISTA 
     const addBlog = e => {
         e.preventDefault();
         // VERSIONE CON CREAZIONE DI NUOVO ARRAY
@@ -21,6 +21,16 @@ export default function BlogList() {
         setNewBlog('');
     }
 
+    // FUNZIONE DI CB RIMOZIONE BLOG ALLA LISTA 
+    const removeBlog = i => {
+        const updateBlogs = blogs.filter((blog, index) => {
+            return index !== i
+        });
+        setBlogs(updateBlogs);
+
+
+
+    }
     return (
         <>
             <form onSubmit={addBlog}>
@@ -29,9 +39,15 @@ export default function BlogList() {
                 />
                 <button>INVIA</button>
             </form>
-            {/* output blog */}
+
             {blogs.map((blog, i) =>
-                <li key={i}>{blog}</li>
+                <li key={i}>
+                    {blog}
+                    <button onClick={() => removeBlog(i)}>
+                        Elimina
+                    </button>
+
+                </li>
             )}
         </>
     )
