@@ -12,12 +12,20 @@ export default function BlogList() {
     const [newblog, setNewBlog] = useState('');
 
     // FUNZIONE AGGIUNTA BLOG ALLA LISTA 
+    const addBlog = e => {
+        e.preventDefault();
+        // VERSIONE CON CREAZIONE DI NUOVO ARRAY
+        const updateBlogs = [...blogs, newblog];
+        setBlogs(updateBlogs);
+        // AZZERIAMO IL VALORE DI NEWBLOG
+        setNewBlog('');
+    }
 
     return (
         <>
-            <form>
+            <form onSubmit={addBlog}>
                 <input type='text' value={newblog}
-                    oneChange={event => { setNewBlog(event.target.value) }}
+                    onChange={event => { setNewBlog(event.target.value) }}
                 />
                 <button>INVIA</button>
             </form>
