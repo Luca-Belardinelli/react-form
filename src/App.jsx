@@ -1,10 +1,10 @@
-import MangaList from "./components/MangaList.jsx"
+import BlogList from "./components/BlogList.jsx"
 
 function App() {
 
   return (
     <>
-      <MangaList />
+      <BlogList />
     </>
   )
 }
